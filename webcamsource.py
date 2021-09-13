@@ -2,13 +2,14 @@ import cv2
 from PIL import Image
 import numpy as np
 
+w, h = 640, 480
 class WebcamSource():
     def __init__(self, camera_id=0, fps=30, display=False):
         self.__name = "WebcamSource"
-        self.__capture = cv2.VideoCapture(camera_id)
-        self.__capture.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
-        self.__capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
-        self.__capture.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'MJPG'))
+        self.__capture = cv2.VideoCapture(camera_id ,cv2.CAP_DSHOW)
+        self.__capture.set(cv2.CAP_PROP_FRAME_WIDTH, w)
+        self.__capture.set(cv2.CAP_PROP_FRAME_HEIGHT, h)
+        #self.__capture.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'MJPG'))
         self.__capture.set(cv2.CAP_PROP_FPS, fps)
         self.__display = display
 
